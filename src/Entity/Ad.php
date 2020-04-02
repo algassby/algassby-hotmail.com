@@ -171,6 +171,7 @@ class Ad
         return $this;
     }
 
+
     /**
      * @return Collection|Image[]
      */

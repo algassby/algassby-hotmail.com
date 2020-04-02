@@ -7,20 +7,24 @@
         <h1 class="my-3" >voici les annonces de nos hotes!</h1>
         <div class="row">
             {% for ad in ads %}
+                {% set url = path('ad_show',{'slug':ad.slug}) %}
                     <div class="col-md-4">
                         <div class="card bg-light mb-3">
                             <div class="card-header text-center">
                                 {{ ad.rooms }} chambres <strong>{{ ad.price }}&euro; / nuit</strong><br/>
                                 <small>pas encore noté</small>
                             </div>
-                            <img src="{{ ad.coverImage }}" style="height: 200px; width: 100%;display: block">
-
+                            <a href="{{url}}">
+                                <img src="{{ ad.coverImage }}" style="height: 200px; width: 100%;display: block">
+                            </a>
                             <div class="card-body">
-                                <h4 class="card-title">{{ ad.title }}</h4>
+                                <a href="{{path('ad_show',{'slug':ad.slug})}}">
+                                    <h4 class="card-title">{{ ad.title }}</h4>
+                                </a>
                                 <p class="card-text">
                                     {{ ad.introduction  }}
                                 </p>
-                                <a href = "#" class="btn btn-secondary">En savoir plus</a>
+                                <a href = "{{path('ad_show',{'slug':ad.slug})}}" class="btn btn-secondary">En savoir plus</a>
                             </div>
                         </div>
                     </div>
